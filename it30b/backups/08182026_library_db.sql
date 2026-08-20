@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.27-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: library_db
 -- ------------------------------------------------------
--- Server version	10.4.32-MariaDB
+-- Server version	10.4.27-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,9 +32,9 @@ DROP TABLE IF EXISTS `students`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `students` (
   `student_id` int(11) NOT NULL AUTO_INCREMENT,
-  `student_first_name` varchar(50) NOT NULL,
-  `student_last_name` varchar(50) NOT NULL,
-  `student_course` varchar(50) NOT NULL,
+  `student_first_name` varchar(200) NOT NULL,
+  `student_last_name` varchar(200) NOT NULL,
+  `student_course` varchar(200) NOT NULL,
   PRIMARY KEY (`student_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -45,7 +45,7 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES (1,'MICHAELLA','RENOJO','BSIT');
+INSERT INTO `students` VALUES (1,'Cliff','Evangelio','BSIT');
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-08-18  8:21:17
+-- Dump completed on 2026-08-20 13:28:21

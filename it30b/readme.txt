@@ -7,4 +7,5 @@ CREATE TABLE <table_name_in_plural>(
 
 #utility Commands
 \! cls
-mysqldump -u root -p --databases library_db > G:\xampp\dev\it30b\backups\08182026_library_db.sql
+
+mysqldump -u root -p --databases library_db > C:\xampp\dev\it30b\backups\08182026_library_db.sql
