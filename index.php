@@ -34,6 +34,36 @@ if ($section === 'students') {
     $students = $stmt->fetchAll();
 }
 
+//create students
+    if ($section=='students' && $action==='create'){
+    if ($_SERVER['REQUEST_METHOD']==='POST'){
+        $firstName = trim($_POST['student_first_name'] ?? '');
+        $lastName = trim($_POST['student_last_name'] ?? '');
+        $course = trim($_POST['student_course'] ?? '');
+
+        if($firstName !=='' && $lastName !=='' && $course !== ''){
+            $sql = "
+            INSERT INTO students(
+                student_first_name,
+                student_last_name,
+                student_course
+            ) VALUES (?,?,?)
+            ";
+
+            $stmt=$pdo->prepare($sql);
+
+            $stmt->execute([   
+                $firstName,
+                $lastName,
+                $course
+            ]);
+
+            header('Location: index.php?section=students');
+            exit;
+                
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,13 +82,55 @@ if ($section === 'students') {
     <a href="index.php?section=books">Books</a> |
     <a href="index.php?section=borrow">Borrow</a>
 </nav>
-
 <hr>
 
 <?php if ($section === 'students'): ?>
-    <h2>Students</h2>
+    <h2>Students</h1>
 
-    <table border="1" cellpadding="5">
+<p>
+    <a href="index.php?section=students&action=create">
+        add student
+    </a>
+</p>
+
+<?php if($action === 'create'): ?>
+    <h2>Create Student</h2>
+
+    <form method="POST">
+        <label>First Name:</label>
+        <br>
+        <input type="text"
+        name="student_first_name"
+         required
+
+         />
+</p>
+
+        <label>Last Name:</label>
+        <br>
+        <input type="text"
+        name="student_last_name"
+            required
+        />
+</p>
+
+        <label>Course:</label>
+        <br>
+        <input type="text"
+        name="student_course"
+            required
+
+        />
+</p>
+
+<button type="submit">
+    save
+</button>
+    <a href="index.php?section=students">
+        cancel
+</a>     
+<?php else: ?>
+    <table border="1">
         <thead>
             <tr>
                 <th>ID</th>
@@ -86,6 +158,11 @@ if ($section === 'students') {
             <?php endforeach; ?>
         </tbody>
     </table>
+
+
+<?php endif; ?>
+        
+
 
 <?php endif; ?>
 
